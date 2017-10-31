@@ -87,11 +87,29 @@ def validate_func1(dirName, goldstandardDir, column):
     return(True,"Passed Validation")
 
 def validate_func2_3(dirName, goldstandard_path, column):
-    goldDf = pd.read_csv(goldstandard_path, sep="\t",index_col=0)
-    prediction_path = os.path.join(dirName,'predictions.tsv')
-    confidence_path = os.path.join(dirName,'confidence.tsv')
-    _validate_func_helper(prediction_path, goldDf, "predictions", column=column, varianceCheck=True, scoring_sc1=False)
-    _validate_func_helper(confidence_path, goldDf, "confidence", column=column, scoring_sc1=False)
+    if column = "proteinID"
+        breast_goldDf = pd.read_csv(os.path.join(goldstandard_path,"prospective_breast_proteome_sort_common_gene_10005.txt"), sep="\t",index_col=0)
+        ova_goldDf = pd.read_csv(os.path.join(goldstandard_path,"prospective_ova_proteome_sort_common_gene_7061.txt"), sep="\t",index_col=0)
+    else:
+        breast_goldDf = pd.read_csv(os.path.join(goldstandard_path,"prospective_breast_phospho_sort_common_gene_31981.txt"), sep="\t",index_col=0)
+        ova_goldDf = pd.read_csv(os.path.join(goldstandard_path,"prospective_ova_phospho_sort_common_gene_10057.txt"), sep="\t",index_col=0)
+       
+    breast_prediction_path = os.path.join(dirName,'breast_predictions.tsv')
+    breast_confidence_path = os.path.join(dirName,'breast_confidence.tsv')
+    ovarian_prediction_path = os.path.join(dirName, 'ovarian_predictions.tsv')
+    ovarian_confidence_path = os.path.join(dirName,'ovarian_confidence.tsv')
+
+    if os.path.exists(breast_prediction_path):
+        _validate_func_helper(breast_prediction_path, goldDf, "predictions", column=column, varianceCheck=True, scoring_sc1=False)
+        _validate_func_helper(breast_confidence_path, goldDf, "confidence", column=column, scoring_sc1=False)
+        _validate_func_helper(ovarian_prediction_path, goldDf, "predictions", column=column, varianceCheck=True, scoring_sc1=False)
+        _validate_func_helper(ovarian_confidence_path, goldDf, "confidence", column=column, scoring_sc1=False)
+    else:
+        goldDf = pd.read_csv(goldstandard_path, sep="\t",index_col=0)   
+        breast_prediction_path = os.path.join(dirName,'predictions.tsv')
+        _validate_func_helper(breast_prediction_path, goldDf, "predictions", column=column, varianceCheck=True, scoring_sc1=False)
+        _validate_func_helper(breast_confidence_path, goldDf, "confidence", column=column, scoring_sc1=False)
+
     return(True,"Passed Validation")
 
 def score1(dirName, goldstandardDir):
@@ -199,14 +217,14 @@ evaluation_queues = [
         'scoring_func':score2,
         'validation_func':validate_func2_3,
         'column':'proteinID',
-        'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/prospective_ova_pro_gold_complete.txt')
+        'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard')
     },
     {
         'id':9606532,
         'scoring_func':score3,
         'validation_func':validate_func2_3,
         'column':'phosphoID',
-        'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/prospective_ova_phospho_gold_complete.txt')
+        'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard')
     }
 ]
 evaluation_queue_by_id = {q['id']:q for q in evaluation_queues}
