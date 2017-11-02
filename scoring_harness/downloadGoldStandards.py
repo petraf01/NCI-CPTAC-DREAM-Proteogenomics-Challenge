@@ -51,13 +51,22 @@ def main():
 	else:
 		downloadData(syn,"syn10807068",downloadDir)
 		downloadData(syn,"syn10807814",downloadDir)
-		sc2 = syn.get("syn10763225")
-		sc3 = syn.get("syn10763252")
+		for i in range(1,101):
+			truth_file = i+100
+			os.rename(os.path.join(downloadDir, "data_test_obs_%s.txt" % truth_file), os.path.join(downloadDir, "data_test_obs_%s.txt" % i))
+			os.rename(os.path.join(downloadDir, "data_test_true_%s.txt" % truth_file), os.path.join(downloadDir, "data_test_true_%s.txt" % i))
+		#SC2
+		downloadData(syn,"syn10617816",downloadDir)
+		#SC3
+		downloadData(syn,"syn10617827",downloadDir)
 
-	shutil.copy(sc2.path, os.path.join(downloadDir, "prospective_ova_pro_gold.txt"))
-	shutil.copy(sc3.path, os.path.join(downloadDir, "prospective_ova_phospho_gold.txt"))
-	shutil.copy(sc2_test.path, os.path.join(downloadDir, "prospective_ova_pro_gold_complete.txt"))
-	shutil.copy(sc3_test.path, os.path.join(downloadDir, "prospective_ova_phospho_gold_complete.txt"))
+		# sc2 = syn.get("syn10763225")
+		# sc3 = syn.get("syn10763252")
+
+	# shutil.copy(sc2.path, os.path.join(downloadDir, "prospective_ova_pro_gold.txt"))
+	# shutil.copy(sc3.path, os.path.join(downloadDir, "prospective_ova_phospho_gold.txt"))
+	# shutil.copy(sc2_test.path, os.path.join(downloadDir, "prospective_ova_pro_gold_complete.txt"))
+	# shutil.copy(sc3_test.path, os.path.join(downloadDir, "prospective_ova_phospho_gold_complete.txt"))
 
 	#Express lane data
 	downloadData(syn, "syn10902163",expressDir)
@@ -65,8 +74,13 @@ def main():
 		shutil.copy(os.path.join(expressDir,"data_true.txt"),os.path.join(expressDir,"data_test_true_%s.txt" % i)) 
 	sc2 = syn.get("syn10903693")
 	shutil.copy(sc2.path, os.path.join(expressDir, "prospective_ova_pro_gold_express.txt"))
+	sc2 = syn.get("syn11378102")
+	shutil.copy(sc2.path, os.path.join(expressDir, "prospective_breast_pro_gold_express.txt"))
+
 	sc3 = syn.get("syn10903614")
 	shutil.copy(sc3.path, os.path.join(expressDir, "prospective_ova_phospho_gold_express.txt"))
+	sc3 = syn.get("syn11378414")
+	shutil.copy(sc3.path, os.path.join(expressDir, "prospective_breast_phospho_gold_express.txt"))
 
 	# if args.express:
 	# 	shutil.copy(cna.path, testDataDir)

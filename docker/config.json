@@ -6,12 +6,22 @@
             "returnLog":"False"
         },
         {
-            "id":8720145,
+            "id":9608069,
             "score_sh":"/score_sc2.sh",
             "returnLog":"False"
         },
         {
-            "id":8720149,
+            "id":9608082,
+            "score_sh":"/score_sc2.sh",
+            "returnLog":"False"
+        },
+        {
+            "id":9608070,
+            "score_sh":"/score_sc3.sh",
+            "returnLog":"False"
+        },
+        {
+            "id":9608083,
             "score_sh":"/score_sc3.sh",
             "returnLog":"False"
         },
@@ -21,12 +31,22 @@
             "returnLog":"True"
         },
         {
-            "id":9604717,
+            "id":9608080,
             "score_sh":"/score_sc2.sh",
             "returnLog":"True"
         },
         {
-            "id":9604718,
+            "id":9608084,
+            "score_sh":"/score_sc2.sh",
+            "returnLog":"True"
+        },
+        {
+            "id":9608081,
+            "score_sh":"/score_sc3.sh",
+            "returnLog":"True"
+        },
+        {
+            "id":9608085,
             "score_sh":"/score_sc3.sh",
             "returnLog":"True"
         },
