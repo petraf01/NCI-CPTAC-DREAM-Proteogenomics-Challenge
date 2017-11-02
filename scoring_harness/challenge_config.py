@@ -124,23 +124,53 @@ def score1(dirName, goldstandardDir):
         observed_path = os.path.join(goldstandardDir, "data_test_obs_%d.txt" % num)
         sc1_corr_scores.append(score_cor(prediction_path, observed_path, goldstandard_path)[0])
         sc1_nrmsd_scores.append(score_nrmse(prediction_path, observed_path, goldstandard_path)[0])
+
     return(pd.np.mean(sc1_corr_scores), pd.np.mean(sc1_nrmsd_scores))
 
 def score2(dirName, goldstandard_path):
     ##Read in submission (submission.filePath)
     ##Score against goldstandard
+
     prediction_path = os.path.join(dirName,'predictions.tsv')
-    corr = corr_by_row(prediction_path, goldstandard_path)[0]
-    rmse = nrmse_by_row(prediction_path, goldstandard_path)[0]
-    return(corr, rmse)
+    if os.path.exists(prediction_path):
+        corr = corr_by_row(prediction_path, goldstandard_path)[0]
+        rmse = nrmse_by_row(prediction_path, goldstandard_path)[0]
+        preds = dict(corr=round(corr,4), rmse=round(rmse,4))
+    else:
+        breast_goldPath = os.path.join(goldstandard_path,"prospective_breast_proteome_sort_common_gene_10005.txt")
+        ova_goldPath = os.path.join(goldstandard_path,"prospective_ova_proteome_sort_common_gene_7061.txt")
+        breast_prediction_path = os.path.join(dirName,'breast_predictions.tsv')
+        breast_confidence_path = os.path.join(dirName,'breast_confidence.tsv')
+        ovarian_prediction_path = os.path.join(dirName, 'ovarian_predictions.tsv')
+        ovarian_confidence_path = os.path.join(dirName,'ovarian_confidence.tsv')
+        breast_corr = corr_by_row(breast_prediction_path, breast_goldPath)[0]
+        breast_rmse = nrmse_by_row(breast_prediction_path, breast_goldPath)[0] 
+        ova_corr = corr_by_row(ovarian_prediction_path, ova_goldPath)[0]
+        ova_rmse = nrmse_by_row(ovarian_prediction_path, ova_goldPath)[0] 
+        preds = dict(breast_corr=round(breast_corr,4), breast_rmse=round(breast_rmse,4), ova_corr=round(ova_corr,4), ova_rmse=round(ova_rmse,4))
+    return(preds)
 
 def score3(dirName, goldstandard_path):
     ##Read in submission (submission.filePath)
     ##Score against goldstandard
     prediction_path = os.path.join(dirName,'predictions.tsv')
-    corr = corr_by_row_sc3(prediction_path, goldstandard_path)[0]
-    rmse = nrmse_by_row_sc3(prediction_path, goldstandard_path)[0]
-    return(corr, rmse)
+    if os.path.exists(prediction_path):
+        corr = corr_by_row(prediction_path, goldstandard_path)[0]
+        rmse = nrmse_by_row(prediction_path, goldstandard_path)[0]
+        preds = dict(corr=round(corr,4), rmse=round(rmse,4))
+    else:
+        breast_goldPath = os.path.join(goldstandard_path,"prospective_breast_phospho_sort_common_gene_31981.txt")
+        ova_goldPath = os.path.join(goldstandard_path,"prospective_ova_phospho_sort_common_gene_10057.txt")
+        breast_prediction_path = os.path.join(dirName,'breast_predictions.tsv')
+        breast_confidence_path = os.path.join(dirName,'breast_confidence.tsv')
+        ovarian_prediction_path = os.path.join(dirName, 'ovarian_predictions.tsv')
+        ovarian_confidence_path = os.path.join(dirName,'ovarian_confidence.tsv')
+        breast_corr = corr_by_row(breast_prediction_path, breast_goldPath)[0]
+        breast_rmse = nrmse_by_row(breast_prediction_path, breast_goldPath)[0] 
+        ova_corr = corr_by_row(ovarian_prediction_path, ova_goldPath)[0]
+        ova_rmse = nrmse_by_row(ovarian_prediction_path, ova_goldPath)[0] 
+        preds = dict(breast_corr=round(breast_corr,4), breast_rmse=round(breast_rmse,4), ova_corr=round(ova_corr,4), ova_rmse=round(ova_rmse,4))
+    return(preds)
 #3 weeks
 #quota =  
 # {u'firstRoundStart': u'2017-07-14T00:00:00.000Z',
@@ -303,9 +333,10 @@ def score_submission(syn, evaluation, submission):
 
 
     if scoring_func is not None:
-        corr, nrmse = scoring_func(dirname,config['goldstandard_path'])
+        pred = scoring_func(dirname,config['goldstandard_path'])
     #Make sure to round results to 3 or 4 digits
-        return(dict(corr=round(corr,4), rmse=round(nrmse,4)), "You submission was scored.\ncorr: %s\nnrmse: %s" %(round(corr,4),round(nrmse,4)))
+        #return(dict(corr=round(corr,4), rmse=round(nrmse,4)), "You submission was scored.\ncorr: %s\nnrmse: %s" %(round(corr,4),round(nrmse,4)))
+        return(pred, "Your submission was scored. You will receive your scores at the end of the round")
     else:
         return(dict(), "Your prediction file is in the correct format and can be scored.  Please feel free to submit to the real challenge queues.")
 
