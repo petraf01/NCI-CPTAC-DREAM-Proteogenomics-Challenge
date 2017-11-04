@@ -11,8 +11,8 @@ nrmse_by_row = robjects.r('NRMSE_by_row')
 score_cor = robjects.r('score.cor')
 score_nrmse = robjects.r('score.nrmsd')
 
-corr_by_row_sc3 = robjects.r('correlation_by_row_ALL_OBSERVED')
-nrmse_by_row_sc3 = robjects.r('NRMSE_by_row_ALL_OBSERVED')
+corr_by_row_sc3 = robjects.r('correlation_by_row_less30percMissing')
+nrmse_by_row_sc3 = robjects.r('NRMSE_by_row_ALL_less30percMissing')
 
 ##-----------------------------------------------------------------------------
 ##
