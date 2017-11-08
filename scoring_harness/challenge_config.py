@@ -320,7 +320,8 @@ def score_submission(syn, evaluation, submission):
     if scoring_func is not None:
         corr, nrmse = scoring_func(dirname,config['goldstandard_path'])
     #Make sure to round results to 3 or 4 digits
-        return(dict(corr=round(corr,4), rmse=round(nrmse,4)), "You submission was scored.\ncorr: %s\nnrmse: %s" %(round(corr,4),round(nrmse,4)))
+        #return(dict(corr=round(corr,4), rmse=round(nrmse,4)), "You submission was scored.\ncorr: %s\nnrmse: %s" %(round(corr,4),round(nrmse,4)))
+        return(dict(corr=round(corr,4), rmse=round(nrmse,4)), "Your scores will not be returned to you until the end of the round"
     else:
         return(dict(), "Your prediction file is in the correct format and can be scored.  Please feel free to submit to the real challenge queues.")
 
