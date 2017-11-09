@@ -25,10 +25,10 @@ ADMIN_USER_IDS = [3324230,3360851]
 
 config_evaluations = [
 #Proteogenomics Subchallenge 1 (8720143)
-#Proteogenomics Subchallenge 2 Ova(8720145)
-#Proteogenomics Subchallenge 3 Ova(8720149)
-#Proteogenomics Subchallenge 2 Breast(9608069)
-#Proteogenomics Subchallenge 3 Breast(9608070)
+#Proteogenomics Subchallenge 2 Breast (9608069)
+#Proteogenomics Subchallenge 2 Ovarian (9608082)
+#Proteogenomics Subchallenge 3 Breast (9608070)
+#Proteogenomics Subchallenge 3 Ovarian (9608083)
 
     {
         'id':8720143,
@@ -36,12 +36,22 @@ config_evaluations = [
         'returnLog':False
     },
     {
-        'id':8720145,
+        'id':9608069,
         'score_sh':'/score_sc2.sh',
         'returnLog':False
     },
     {
-        'id':8720149,
+        'id':9608082,
+        'score_sh':'/score_sc2.sh',
+        'returnLog':False
+    },
+    {
+        'id':9608070,
+        'score_sh':'/score_sc3.sh',
+        'returnLog':False
+    },
+    {
+        'id':9608083,
         'score_sh':'/score_sc3.sh',
         'returnLog':False
     },
@@ -56,8 +66,10 @@ config_evaluations = [
         'returnLog':False
     },
 #Proteogenomics Subchallenge 1 Express (9604716)
-#Proteogenomics Subchallenge 2 Express (9604717)
-#Proteogenomics Subchallenge 3 Express (9604718)
+#Proteogenomics Subchallenge 2 Express Breast (9608080)
+#Proteogenomics Subchallenge 2 Express Ovarian (9608084)
+#Proteogenomics Subchallenge 3 Express Breast (9608081)
+#Proteogenomics Subchallenge 3 Express Ovarian (9608085)
 
     {
         'id':9604716,
@@ -65,34 +77,44 @@ config_evaluations = [
         'returnLog':True
     },
     {
-        'id':9604717,
+        'id':9608080,
         'score_sh':'/score_sc2.sh',
         'returnLog':True
     },
     {
-        'id':9604718,
+        'id':9608084,
+        'score_sh':'/score_sc2.sh',
+        'returnLog':True
+    },
+    {
+        'id':9608081,
         'score_sh':'/score_sc3.sh',
         'returnLog':True
     },
+    {
+        'id':9608085,
+        'score_sh':'/score_sc3.sh',
+        'returnLog':True
+    }
 #Proteogenomics Subchallenge 1 Internal (9606530)
 #Proteogenomics Subchallenge 2 Internal (9606531)
 #Proteogenomics Subchallenge 3 Internal (9606532)
 
-    {
-        'id':9606530,
-        'score_sh':'/score_sc1.sh',
-        'returnLog':True
-    },
-    {
-        'id':9606531,
-        'score_sh':'/score_sc2.sh',
-        'returnLog':True
-    },
-    {
-        'id':9606532,
-        'score_sh':'/score_sc3.sh',
-        'returnLog':True
-    }
+    # {
+    #     'id':9606530,
+    #     'score_sh':'/score_sc1.sh',
+    #     'returnLog':True
+    # },
+    # {
+    #     'id':9606531,
+    #     'score_sh':'/score_sc2.sh',
+    #     'returnLog':True
+    # },
+    # {
+    #     'id':9606532,
+    #     'score_sh':'/score_sc3.sh',
+    #     'returnLog':True
+    # }
 
 ]
 

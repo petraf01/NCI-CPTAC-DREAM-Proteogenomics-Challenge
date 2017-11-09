@@ -13,14 +13,16 @@ fi
 #Validate submissions
 #---------------------
 #Proteogenomics Subchallenge 3 Express (9604718)
-python $script_dir/docker_challenge.py --acknowledge-receipt --canCancel -u $SYNAPSE_USER -p $SYNAPSE_PASS --send-messages --notifications validate 9604718 >> $script_dir/log/score.log 2>&1
+python $script_dir/docker_challenge.py --acknowledge-receipt --canCancel -u $SYNAPSE_USER -p $SYNAPSE_PASS --send-messages --notifications validate 9608081 >> $script_dir/log/score.log 2>&1
+python $script_dir/docker_challenge.py --acknowledge-receipt --canCancel -u $SYNAPSE_USER -p $SYNAPSE_PASS --send-messages --notifications validate 9608085 >> $script_dir/log/score.log 2>&1
 
 #--------------------
 #Score submissions
 #--------------------
 #python $script_dir/docker_challenge.py --canCancel -u $SYNAPSE_USER -p $SYNAPSE_PASS --send-messages --notifications score 9604718 >> $script_dir/log/score.log 2>&1
 #python $script_dir/docker_challengeThreaded.py --threads 4 --canCancel -u $SYNAPSE_USER -p $SYNAPSE_PASS --send-messages --notifications score 9604718 >> $script_dir/log/score.log 2>&1
-python $script_dir/docker_challengeScheduled.py --timeQuota 14400000 --threads 4 --canCancel -u $SYNAPSE_USER -p $SYNAPSE_PASS --send-messages --notifications score 9604718 >> $script_dir/log/score.log 2>&1
+python $script_dir/docker_challengeScheduled.py --timeQuota 14400000 --threads 4 --canCancel -u $SYNAPSE_USER -p $SYNAPSE_PASS --send-messages --notifications score 9608081 >> $script_dir/log/score.log 2>&1
+python $script_dir/docker_challengeScheduled.py --timeQuota 14400000 --threads 4 --canCancel -u $SYNAPSE_USER -p $SYNAPSE_PASS --send-messages --notifications score 9608085 >> $script_dir/log/score.log 2>&1
 
 #--------------------
 #Stop submissions

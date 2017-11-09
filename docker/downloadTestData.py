@@ -50,10 +50,10 @@ def main():
 			sc2 = 'syn10617841'
 			sc3 = 'syn10617844'
 			replace = "_final_round"
-
+	removeFile = []
 	if args.sc == 'sc1':
 		downloadData(syn, sc1,testDataDir)
-		removeFile = os.path.join(testDataDir, "data_true.txt")
+		removeFile.append(os.path.join(testDataDir, "data_true.txt"))
 		if args.express:
 			for i in range(1,101):
 				os.rename(os.path.join(testDataDir, "data_obs_%s.txt" % i), os.path.join(testDataDir, "data_test_obs_%s.txt" % i))
@@ -63,13 +63,18 @@ def main():
 				os.rename(os.path.join(testDataDir, "data_test_obs_%s.txt" % truth_file), os.path.join(testDataDir, "data_test_obs_%s.txt" % i))
 	elif args.sc == 'sc2':
 		downloadData(syn, sc2, testDataDir)
-		removeFile = os.path.join(testDataDir, "prospective_ova_pro_gold_express.txt")
+		removeFile.append(os.path.join(testDataDir, "prospective_ova_pro_gold_express.txt"))
+		if args.round == "final":
+			removeFile.append(os.path.join(testDataDir, "prospective_breast_pro_gold_express.txt"))
 	else:
 		downloadData(syn, sc3, testDataDir)
-		removeFile = os.path.join(testDataDir, "prospective_ova_phospho_gold_express.txt")
-	
+		removeFile.append(os.path.join(testDataDir, "prospective_ova_phospho_gold_express.txt"))
+		if args.round == "final":
+			removeFile.append(os.path.join(testDataDir, "prospective_breast_phospho_gold_express.txt"))
+		
 	if args.express:
-		os.remove(removeFile)
+		for remove in removeFile:
+			os.remove(remove)
 
 
 if __name__ == '__main__':

@@ -11,8 +11,8 @@ nrmse_by_row = robjects.r('NRMSE_by_row')
 score_cor = robjects.r('score.cor')
 score_nrmse = robjects.r('score.nrmsd')
 
-corr_by_row_sc3 = robjects.r('correlation_by_row_ALL_OBSERVED')
-nrmse_by_row_sc3 = robjects.r('NRMSE_by_row_ALL_OBSERVED')
+corr_by_row_sc3 = robjects.r('correlation_by_row_less30percMissing')
+nrmse_by_row_sc3 = robjects.r('NRMSE_by_row_ALL_less30percMissing')
 
 ##-----------------------------------------------------------------------------
 ##
@@ -133,10 +133,10 @@ def score3(dirName, goldstandard_path):
 evaluation_queues = [
 
 # Proteogenomics Subchallenge 1 (8720143)
-#Proteogenomics Subchallenge 2 Ova(8720145)
-#Proteogenomics Subchallenge 3 Ova(8720149)
-#Proteogenomics Subchallenge 2 Breast(9608069)
-#Proteogenomics Subchallenge 3 Breast(9608070)
+# Proteogenomics Subchallenge 2 Breast (9608069)
+# Proteogenomics Subchallenge 3 Breast (9608070)
+# Proteogenomics Subchallenge 2 Ovarian (9608082)
+# Proteogenomics Subchallenge 3 Ovarian (9608083)
     {
         'id':8720143,
         'scoring_func':score1,
@@ -146,18 +146,32 @@ evaluation_queues = [
         'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard')
     },
     {
-        'id':8720145,
+        'id':9608069,
         'scoring_func':score2,
         'validation_func':validate_func2_3,
         'column':'proteinID',
-        'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/prospective_ova_pro_gold.txt')
+        'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/prospective_breast_proteome_sort_common_gene_10005.txt')
     },
     {
-        'id':8720149,
+        'id':9608070,
         'scoring_func':score3,
         'validation_func':validate_func2_3,
         'column':'phosphoID',
-        'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/prospective_ova_phospho_gold.txt')
+        'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/prospective_breast_phospho_sort_common_gene_31981.txt')
+    },
+    {
+        'id':9608082,
+        'scoring_func':score2,
+        'validation_func':validate_func2_3,
+        'column':'proteinID',
+        'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/prospective_ova_proteome_sort_common_gene_7061.txt')
+    },
+    {
+        'id':9608083,
+        'scoring_func':score3,
+        'validation_func':validate_func2_3,
+        'column':'phosphoID',
+        'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/prospective_ova_phospho_sort_common_gene_10057.txt')
     },
     #EDIT THIS
     {
@@ -175,8 +189,10 @@ evaluation_queues = [
         'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/prospective_ova_phospho_gold.txt')
     },
 # Proteogenomics Subchallenge 1 Express Lane (9604716)
-# Proteogenomics Subchallenge 2 Express Lane (9604717)
-# Proteogenomics Subchallenge 3 Express Lane (9604718)
+# Proteogenomics Subchallenge 2 Express Breast (9608080)
+# Proteogenomics Subchallenge 3 Express Breast (9608081)
+# Proteogenomics Subchallenge 2 Express Ovarian (9608084)
+# Proteogenomics Subchallenge 3 Express Ovarian (9608085)
     {
         'id':9604716,
         'scoring_func':None,
@@ -186,14 +202,29 @@ evaluation_queues = [
 
     },
     {
-        'id':9604717,
+        'id':9608080,
+        'scoring_func':None,
+        'validation_func':validate_func2_3,
+        'column':'proteinID',
+        'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/express/prospective_breast_pro_gold_express.txt')
+    },
+    {
+        'id':9608081,
+        'scoring_func':None,
+        'validation_func':validate_func2_3,
+        'column':'phosphoID',
+        'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/express/prospective_breast_phospho_gold_express.txt')
+
+    },
+    {
+        'id':9608084,
         'scoring_func':None,
         'validation_func':validate_func2_3,
         'column':'proteinID',
         'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/express/prospective_ova_pro_gold_express.txt')
     },
     {
-        'id':9604718,
+        'id':9608085,
         'scoring_func':None,
         'validation_func':validate_func2_3,
         'column':'phosphoID',
