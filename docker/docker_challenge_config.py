@@ -25,8 +25,10 @@ ADMIN_USER_IDS = [3324230,3360851]
 
 config_evaluations = [
 #Proteogenomics Subchallenge 1 (8720143)
-#Proteogenomics Subchallenge 2 (8720145)
-#Proteogenomics Subchallenge 3 (8720149)
+#Proteogenomics Subchallenge 2 Ova(8720145)
+#Proteogenomics Subchallenge 3 Ova(8720149)
+#Proteogenomics Subchallenge 2 Breast(9608069)
+#Proteogenomics Subchallenge 3 Breast(9608070)
 
     {
         'id':8720143,
@@ -40,6 +42,16 @@ config_evaluations = [
     },
     {
         'id':8720149,
+        'score_sh':'/score_sc3.sh',
+        'returnLog':False
+    },
+    {
+        'id':9608069,
+        'score_sh':'/score_sc2.sh',
+        'returnLog':False
+    },
+    {
+        'id':9608070,
         'score_sh':'/score_sc3.sh',
         'returnLog':False
     },

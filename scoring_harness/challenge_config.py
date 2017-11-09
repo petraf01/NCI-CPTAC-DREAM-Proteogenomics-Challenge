@@ -133,8 +133,10 @@ def score3(dirName, goldstandard_path):
 evaluation_queues = [
 
 # Proteogenomics Subchallenge 1 (8720143)
-# Proteogenomics Subchallenge 2 (8720145)
-# Proteogenomics Subchallenge 3 (8720149)
+#Proteogenomics Subchallenge 2 Ova(8720145)
+#Proteogenomics Subchallenge 3 Ova(8720149)
+#Proteogenomics Subchallenge 2 Breast(9608069)
+#Proteogenomics Subchallenge 3 Breast(9608070)
     {
         'id':8720143,
         'scoring_func':score1,
@@ -152,6 +154,21 @@ evaluation_queues = [
     },
     {
         'id':8720149,
+        'scoring_func':score3,
+        'validation_func':validate_func2_3,
+        'column':'phosphoID',
+        'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/prospective_ova_phospho_gold.txt')
+    },
+    #EDIT THIS
+    {
+        'id':9608069,
+        'scoring_func':score2,
+        'validation_func':validate_func2_3,
+        'column':'proteinID',
+        'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/prospective_ova_pro_gold.txt')
+    },
+    {
+        'id':9608070,
         'scoring_func':score3,
         'validation_func':validate_func2_3,
         'column':'phosphoID',
@@ -287,7 +304,8 @@ def score_submission(syn, evaluation, submission):
     if scoring_func is not None:
         corr, nrmse = scoring_func(dirname,config['goldstandard_path'])
     #Make sure to round results to 3 or 4 digits
-        return(dict(corr=round(corr,4), rmse=round(nrmse,4)), "You submission was scored.\ncorr: %s\nnrmse: %s" %(round(corr,4),round(nrmse,4)))
+        #return(dict(corr=round(corr,4), rmse=round(nrmse,4)), "You submission was scored.\ncorr: %s\nnrmse: %s" %(round(corr,4),round(nrmse,4)))
+        return(dict(corr=round(corr,4), rmse=round(nrmse,4)), "You submission was scored, and your scores will be revealed to you at the end of the round.")
     else:
         return(dict(), "Your prediction file is in the correct format and can be scored.  Please feel free to submit to the real challenge queues.")
 
