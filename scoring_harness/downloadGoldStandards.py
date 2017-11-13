@@ -85,14 +85,14 @@ def main():
 	for i in range(1,101):
 		shutil.copy(os.path.join(expressDir,"data_true.txt"),os.path.join(expressDir,"data_test_true_%s.txt" % i)) 
 	sc2 = syn.get("syn10903693")
-	shutil.copy(sc2.path, os.path.join(expressDir, "prospective_ova_pro_gold_express.txt"))
+	shutil.move(sc2.path, os.path.join(expressDir, "prospective_ova_pro_gold_express.txt"))
 	sc2 = syn.get("syn11378102")
-	shutil.copy(sc2.path, os.path.join(expressDir, "prospective_breast_pro_gold_express.txt"))
+	shutil.move(sc2.path, os.path.join(expressDir, "prospective_breast_pro_gold_express.txt"))
 
 	sc3 = syn.get("syn10903614")
-	shutil.copy(sc3.path, os.path.join(expressDir, "prospective_ova_phospho_gold_express.txt"))
+	shutil.move(sc3.path, os.path.join(expressDir, "prospective_ova_phospho_gold_express.txt"))
 	sc3 = syn.get("syn11378414")
-	shutil.copy(sc3.path, os.path.join(expressDir, "prospective_breast_phospho_gold_express.txt"))
+	shutil.move(sc3.path, os.path.join(expressDir, "prospective_breast_phospho_gold_express.txt"))
 
 	# if args.express:
 	# 	shutil.copy(cna.path, testDataDir)
