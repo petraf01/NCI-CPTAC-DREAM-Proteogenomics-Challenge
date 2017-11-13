@@ -69,8 +69,8 @@ def main():
 		breast_df = breast_df[breast_df['Gene_ID'].isin(breast_filtered_df['Phosphosites'])]
 		ova_df = ova_df[ova_df['Gene_ID'].isin(ovarian_filtered_df['Phosphosites'])]
 
-		breast_df.to_csv(os.path.join(downloadDir,"prospective_breast_phospho_sort_common_gene_31981.txt"))
-		ova_df.to_csv(os.path.join(downloadDir,"prospective_ova_phospho_sort_common_gene_10057.txt"))
+		breast_df.to_csv(os.path.join(downloadDir,"prospective_breast_phospho_sort_common_gene_31981.txt"),sep="\t",index=False)
+		ova_df.to_csv(os.path.join(downloadDir,"prospective_ova_phospho_sort_common_gene_10057.txt"),sep="\t",index=False)
 
 		# sc2 = syn.get("syn10763225")
 		# sc3 = syn.get("syn10763252")
