@@ -2,7 +2,7 @@ import synapseclient
 import argparse
 import os
 import shutil
-
+import pandas as pd
 def downloadData(syn, parentId, testDataDir):
 	download = syn.getChildren(parentId)
 	for i in download:
@@ -59,6 +59,18 @@ def main():
 		downloadData(syn,"syn10617816",downloadDir)
 		#SC3
 		downloadData(syn,"syn10617827",downloadDir)
+		breast_filtered = syn.get("syn11422981")
+		ovarian_filtered = syn.get("syn11422982")
+		breast_filtered_df = pd.read_csv(breast_filtered.path)
+		ovarian_filtered_df = pd.read_csv(ovarian_filtered.path)
+		breast_df = pd.read_csv(os.path.join(downloadDir,"prospective_breast_phospho_sort_common_gene_31981.txt"),sep="\t")
+		ova_df = pd.read_csv(os.path.join(downloadDir,"prospective_ova_phospho_sort_common_gene_10057.txt"),sep="\t")
+
+		breast_df = breast_df[breast_df['Gene_ID'].isin(breast_filtered_df['Phosphosites'])]
+		ova_df = ova_df[ova_df['Gene_ID'].isin(ovarian_filtered_df['Phosphosites'])]
+
+		breast_df.to_csv(os.path.join(downloadDir,"prospective_breast_phospho_sort_common_gene_31981.txt"))
+		ova_df.to_csv(os.path.join(downloadDir,"prospective_ova_phospho_sort_common_gene_10057.txt"))
 
 		# sc2 = syn.get("syn10763225")
 		# sc3 = syn.get("syn10763252")
