@@ -173,21 +173,6 @@ evaluation_queues = [
         'column':'phosphoID',
         'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/prospective_ova_phospho_sort_common_gene_10057.txt')
     },
-    #EDIT THIS
-    {
-        'id':9608069,
-        'scoring_func':score2,
-        'validation_func':validate_func2_3,
-        'column':'proteinID',
-        'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/prospective_ova_pro_gold.txt')
-    },
-    {
-        'id':9608070,
-        'scoring_func':score3,
-        'validation_func':validate_func2_3,
-        'column':'phosphoID',
-        'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/prospective_ova_phospho_gold.txt')
-    },
 # Proteogenomics Subchallenge 1 Express Lane (9604716)
 # Proteogenomics Subchallenge 2 Express Breast (9608080)
 # Proteogenomics Subchallenge 3 Express Breast (9608081)
