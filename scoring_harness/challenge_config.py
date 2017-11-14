@@ -5,14 +5,17 @@ import zipfile
 import pandas as pd
 filePath = os.path.join(os.path.dirname(os.path.abspath(__file__)),'scoring_functions.R')
 robjects.r("source('%s')" % filePath)
-corr_by_row = robjects.r('correlation_by_row')
-nrmse_by_row = robjects.r('NRMSE_by_row')
-
+#Sc1
 score_cor = robjects.r('score.cor')
 score_nrmse = robjects.r('score.nrmsd')
 
-corr_by_row_sc3 = robjects.r('correlation_by_row_less30percMissing')
-nrmse_by_row_sc3 = robjects.r('NRMSE_by_row_ALL_less30percMissing')
+#Sc2
+corr_by_row = robjects.r('correlation_by_row_FINAL_ROUND_sc2')
+nrmse_by_row = robjects.r('NRMSE_by_row_FINAL_ROUND_sc2')
+
+#sc3
+corr_by_row_sc3 = robjects.r('correlation_by_row_FINAL_ROUND_sc3')
+nrmse_by_row_sc3 = robjects.r('NRMSE_by_row_FINAL_ROUND_sc3')
 
 ##-----------------------------------------------------------------------------
 ##
