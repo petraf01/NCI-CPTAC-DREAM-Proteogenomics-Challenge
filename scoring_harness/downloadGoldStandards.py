@@ -57,6 +57,19 @@ def main():
 			os.rename(os.path.join(downloadDir, "data_test_true_%s.txt" % truth_file), os.path.join(downloadDir, "data_test_true_%s.txt" % i))
 		#SC2
 		downloadData(syn,"syn10617816",downloadDir)
+		breast_filtered = syn.get("syn11436416")
+		ovarian_filtered = syn.get("syn11436417")
+		breast_filtered_df = pd.read_csv(breast_filtered.path)
+		ovarian_filtered_df = pd.read_csv(ovarian_filtered.path)
+		breast_df = pd.read_csv(os.path.join(downloadDir,"prospective_breast_proteome_sort_common_gene_10005.txt"),sep="\t")
+		ova_df = pd.read_csv(os.path.join(downloadDir,"prospective_ova_proteome_sort_common_gene_7061.txt"),sep="\t")
+
+		breast_df = breast_df[breast_df['Gene_ID'].isin(breast_filtered_df['IDs'])]
+		ova_df = ova_df[ova_df['Gene_ID'].isin(ovarian_filtered_df['IDs'])]
+
+		breast_df.to_csv(os.path.join(downloadDir,"prospective_breast_proteome_sort_common_gene_10005.txt"),sep="\t",index=False)
+		ova_df.to_csv(os.path.join(downloadDir,"prospective_ova_proteome_sort_common_gene_7061.txt"),sep="\t",index=False)
+
 		#SC3
 		downloadData(syn,"syn10617827",downloadDir)
 		breast_filtered = syn.get("syn11422981")
