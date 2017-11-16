@@ -26,6 +26,16 @@
             "returnLog":"False"
         },
         {
+            "id":9608069,
+            "score_sh":"/score_sc2.sh",
+            "returnLog":"False"
+        },
+        {
+            "id":9608070,
+            "score_sh":"/score_sc3.sh",
+            "returnLog":"False"
+        },
+        {
             "id":9604716,
             "score_sh":"/score_sc1.sh",
             "returnLog":"True"

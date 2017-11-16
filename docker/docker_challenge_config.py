@@ -30,7 +30,6 @@ config_evaluations = [
 #Proteogenomics Subchallenge 3 Breast (9608070)
 #Proteogenomics Subchallenge 3 Ovarian (9608083)
 
-
     {
         'id':8720143,
         'score_sh':'/score_sc1.sh',
@@ -53,6 +52,16 @@ config_evaluations = [
     },
     {
         'id':9608083,
+        'score_sh':'/score_sc3.sh',
+        'returnLog':False
+    },
+    {
+        'id':9608069,
+        'score_sh':'/score_sc2.sh',
+        'returnLog':False
+    },
+    {
+        'id':9608070,
         'score_sh':'/score_sc3.sh',
         'returnLog':False
     },

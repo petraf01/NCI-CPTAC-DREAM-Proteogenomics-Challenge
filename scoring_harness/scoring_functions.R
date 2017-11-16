@@ -196,6 +196,3 @@ NRMSE_by_row_ALL_less30percMissing <- function(pred_path, truth_path)  {
   return(mean(nrmse_vec))
 }
 
-
-
-

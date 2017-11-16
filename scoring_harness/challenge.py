@@ -231,7 +231,7 @@ def validate(evaluation, canCancel, dry_run=False):
         if canCancel:
             status.canCancel = True
         if not is_valid:
-            failure_reason = {"FAILURE_REASON":validation_message}
+            failure_reason = {"FAILURE_REASON":validation_message[0:1000]}
         else:
             failure_reason = {"FAILURE_REASON":''}
         add_annotations = synapseclient.annotations.to_submission_status_annotations(failure_reason,is_private=False)

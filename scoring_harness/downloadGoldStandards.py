@@ -2,7 +2,7 @@ import synapseclient
 import argparse
 import os
 import shutil
-
+import pandas as pd
 def downloadData(syn, parentId, testDataDir):
 	download = syn.getChildren(parentId)
 	for i in download:
@@ -57,8 +57,33 @@ def main():
 			os.rename(os.path.join(downloadDir, "data_test_true_%s.txt" % truth_file), os.path.join(downloadDir, "data_test_true_%s.txt" % i))
 		#SC2
 		downloadData(syn,"syn10617816",downloadDir)
+		breast_filtered = syn.get("syn11436416")
+		ovarian_filtered = syn.get("syn11436417")
+		breast_filtered_df = pd.read_csv(breast_filtered.path)
+		ovarian_filtered_df = pd.read_csv(ovarian_filtered.path)
+		breast_df = pd.read_csv(os.path.join(downloadDir,"prospective_breast_proteome_sort_common_gene_10005.txt"),sep="\t")
+		ova_df = pd.read_csv(os.path.join(downloadDir,"prospective_ova_proteome_sort_common_gene_7061.txt"),sep="\t")
+
+		breast_df = breast_df[breast_df['Gene_ID'].isin(breast_filtered_df['IDs'])]
+		ova_df = ova_df[ova_df['Gene_ID'].isin(ovarian_filtered_df['IDs'])]
+
+		breast_df.to_csv(os.path.join(downloadDir,"prospective_breast_proteome_sort_common_gene_10005.txt"),sep="\t",index=False)
+		ova_df.to_csv(os.path.join(downloadDir,"prospective_ova_proteome_sort_common_gene_7061.txt"),sep="\t",index=False)
+
 		#SC3
 		downloadData(syn,"syn10617827",downloadDir)
+		breast_filtered = syn.get("syn11422981")
+		ovarian_filtered = syn.get("syn11422982")
+		breast_filtered_df = pd.read_csv(breast_filtered.path)
+		ovarian_filtered_df = pd.read_csv(ovarian_filtered.path)
+		breast_df = pd.read_csv(os.path.join(downloadDir,"prospective_breast_phospho_sort_common_gene_31981.txt"),sep="\t")
+		ova_df = pd.read_csv(os.path.join(downloadDir,"prospective_ova_phospho_sort_common_gene_10057.txt"),sep="\t")
+
+		breast_df = breast_df[breast_df['Gene_ID'].isin(breast_filtered_df['Phosphosites'])]
+		ova_df = ova_df[ova_df['Gene_ID'].isin(ovarian_filtered_df['Phosphosites'])]
+
+		breast_df.to_csv(os.path.join(downloadDir,"prospective_breast_phospho_sort_common_gene_31981.txt"),sep="\t",index=False)
+		ova_df.to_csv(os.path.join(downloadDir,"prospective_ova_phospho_sort_common_gene_10057.txt"),sep="\t",index=False)
 
 		# sc2 = syn.get("syn10763225")
 		# sc3 = syn.get("syn10763252")
@@ -73,14 +98,14 @@ def main():
 	for i in range(1,101):
 		shutil.copy(os.path.join(expressDir,"data_true.txt"),os.path.join(expressDir,"data_test_true_%s.txt" % i)) 
 	sc2 = syn.get("syn10903693")
-	shutil.copy(sc2.path, os.path.join(expressDir, "prospective_ova_pro_gold_express.txt"))
+	shutil.move(sc2.path, os.path.join(expressDir, "prospective_ova_pro_gold_express.txt"))
 	sc2 = syn.get("syn11378102")
-	shutil.copy(sc2.path, os.path.join(expressDir, "prospective_breast_pro_gold_express.txt"))
+	shutil.move(sc2.path, os.path.join(expressDir, "prospective_breast_pro_gold_express.txt"))
 
 	sc3 = syn.get("syn10903614")
-	shutil.copy(sc3.path, os.path.join(expressDir, "prospective_ova_phospho_gold_express.txt"))
+	shutil.move(sc3.path, os.path.join(expressDir, "prospective_ova_phospho_gold_express.txt"))
 	sc3 = syn.get("syn11378414")
-	shutil.copy(sc3.path, os.path.join(expressDir, "prospective_breast_phospho_gold_express.txt"))
+	shutil.move(sc3.path, os.path.join(expressDir, "prospective_breast_phospho_gold_express.txt"))
 
 	# if args.express:
 	# 	shutil.copy(cna.path, testDataDir)
