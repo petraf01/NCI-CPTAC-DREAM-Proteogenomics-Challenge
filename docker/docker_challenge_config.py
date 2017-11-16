@@ -95,16 +95,16 @@ config_evaluations = [
         'id':9608085,
         'score_sh':'/score_sc3.sh',
         'returnLog':True
-    }
+    },
 #Proteogenomics Subchallenge 1 Internal (9606530)
 #Proteogenomics Subchallenge 2 Internal (9606531)
 #Proteogenomics Subchallenge 3 Internal (9606532)
 
-    # {
-    #     'id':9606530,
-    #     'score_sh':'/score_sc1.sh',
-    #     'returnLog':True
-    # },
+    {
+        'id':9606530,
+        'score_sh':'/score_sc1.sh',
+        'returnLog':True
+    }
     # {
     #     'id':9606531,
     #     'score_sh':'/score_sc2.sh',
