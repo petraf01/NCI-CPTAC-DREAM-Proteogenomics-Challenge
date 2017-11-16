@@ -240,6 +240,22 @@ evaluation_queues = [
         'validation_func':validate_func2_3,
         'column':'phosphoID',
         'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/prospective_ova_phospho_gold_complete.txt')
+    },
+
+    #SC2,3 ROUND1,2
+    {
+        'id':8720145,
+        'scoring_func':score2,
+        'validation_func':validate_func2_3,
+        'column':'proteinID',
+        'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/prospective_ova_pro_gold.txt')
+    },
+    {
+        'id':8720149,
+        'scoring_func':score3,
+        'validation_func':validate_func2_3,
+        'column':'phosphoID',
+        'goldstandard_path':os.path.join(os.path.dirname(os.path.abspath(__file__)),'goldstandard/prospective_ova_phospho_gold.txt')
     }
 ]
 evaluation_queue_by_id = {q['id']:q for q in evaluation_queues}
