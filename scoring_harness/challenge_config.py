@@ -110,7 +110,7 @@ def score1(dirName, goldstandardDir):
         observed_path = os.path.join(goldstandardDir, "data_test_obs_%d.txt" % num)
         sc1_corr_scores.append(score_cor(prediction_path, observed_path, goldstandard_path)[0])
         sc1_nrmsd_scores.append(score_nrmse(prediction_path, observed_path, goldstandard_path)[0])
-    return(pd.np.mean(sc1_corr_scores), pd.np.mean(sc1_nrmsd_scores))
+    return(dict(corr=round(pd.np.mean(sc1_corr_scores),4), rmse=round(pd.np.mean(sc1_nrmsd_scores),4)))
 
 def score2(dirName, goldstandard_path):
     ##Read in submission (submission.filePath)
@@ -118,7 +118,7 @@ def score2(dirName, goldstandard_path):
     prediction_path = os.path.join(dirName,'predictions.tsv')
     corr = corr_by_row(prediction_path, goldstandard_path)[0]
     rmse = nrmse_by_row(prediction_path, goldstandard_path)[0]
-    return(corr, rmse)
+    return(dict(corr=round(corr,4), rmse=round(rmse,4)))
 
 def score3(dirName, goldstandard_path):
     ##Read in submission (submission.filePath)
@@ -126,7 +126,7 @@ def score3(dirName, goldstandard_path):
     prediction_path = os.path.join(dirName,'predictions.tsv')
     corr = corr_by_row_sc3(prediction_path, goldstandard_path)[0]
     rmse = nrmse_by_row_sc3(prediction_path, goldstandard_path)[0]
-    return(corr, rmse)
+    return(dict(corrNew=round(corr,4), rmseNew=round(rmse,4)))
 #3 weeks
 #quota =  
 # {u'firstRoundStart': u'2017-07-14T00:00:00.000Z',
@@ -338,10 +338,10 @@ def score_submission(syn, evaluation, submission):
 
 
     if scoring_func is not None:
-        corr, nrmse = scoring_func(dirname,config['goldstandard_path'])
+        score = scoring_func(dirname,config['goldstandard_path'])
     #Make sure to round results to 3 or 4 digits
         #return(dict(corr=round(corr,4), rmse=round(nrmse,4)), "You submission was scored.\ncorr: %s\nnrmse: %s" %(round(corr,4),round(nrmse,4)))
-        return(dict(corr=round(corr,4), rmse=round(nrmse,4)), "You submission was scored, and your scores will be revealed to you at the end of the round.")
+        return(score, "You submission was scored, and your scores will be revealed to you at the end of the round.")
     else:
         return(dict(), "Your prediction file is in the correct format and can be scored.  Please feel free to submit to the real challenge queues.")
 
