@@ -88,7 +88,7 @@ def validate_func1(dirName, goldstandardDir, column):
         prediction_path = os.path.join(dirName,'predictions_%d.tsv' % num)
         confidence_path = os.path.join(dirName,'confidence_%d.tsv' % num)
         _validate_func_helper(prediction_path, goldDf, "predictions")
-        _validate_func_helper(confidence_path, goldDf, "confidence")
+        #_validate_func_helper(confidence_path, goldDf, "confidence")
     return(True,"Passed Validation")
 
 def validate_func2_3(dirName, goldstandard_path, column):
