@@ -104,17 +104,17 @@ config_evaluations = [
         'id':9606530,
         'score_sh':'/score_sc1.sh',
         'returnLog':True
-    }
+    },
     # {
     #     'id':9606531,
     #     'score_sh':'/score_sc2.sh',
     #     'returnLog':True
     # },
-    # {
-    #     'id':9606532,
-    #     'score_sh':'/score_sc3.sh',
-    #     'returnLog':True
-    # }
+    {
+        'id':9606532,
+        'score_sh':'/score_sc3.sh',
+        'returnLog':True
+    }
 
 ]
 
