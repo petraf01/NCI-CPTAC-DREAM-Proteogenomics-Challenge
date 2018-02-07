@@ -13,8 +13,8 @@ fi
 #Validate submissions
 #---------------------
 #Proteogenomics Subchallenge 2 (8720145)
-python $script_dir/docker_challenge.py --acknowledge-receipt --canCancel -u $SYNAPSE_USER -p $SYNAPSE_PASS --send-messages --notifications validate 9608069 >> $script_dir/log/score.log 2>&1
-python $script_dir/docker_challenge.py --acknowledge-receipt --canCancel -u $SYNAPSE_USER -p $SYNAPSE_PASS --send-messages --notifications validate 9608082 >> $script_dir/log/score.log 2>&1
+python $script_dir/docker_challenge.py --acknowledge-receipt --canCancel -u $SYNAPSE_USER -p $SYNAPSE_PASS --send-messages --notifications validate 9609967 >> $script_dir/log/score.log 2>&1
+python $script_dir/docker_challenge.py --acknowledge-receipt --canCancel -u $SYNAPSE_USER -p $SYNAPSE_PASS --send-messages --notifications validate 9609968 >> $script_dir/log/score.log 2>&1
 
 #--------------------
 #Score submissions
@@ -22,8 +22,8 @@ python $script_dir/docker_challenge.py --acknowledge-receipt --canCancel -u $SYN
 #python $script_dir/docker_challenge.py --canCancel -u $SYNAPSE_USER -p $SYNAPSE_PASS --send-messages --notifications score 8720145 >> $script_dir/log/score.log 2>&1
 #python $script_dir/docker_challengeThreaded.py --threads 4 --canCancel -u $SYNAPSE_USER -p $SYNAPSE_PASS --send-messages --notifications score 8720145 >> $script_dir/log/score.log 2>&1
 
-python $script_dir/docker_challengeScheduled.py --timeQuota 14400000 --threads 4 --canCancel -u $SYNAPSE_USER -p $SYNAPSE_PASS --send-messages --notifications score 9608069 >> $script_dir/log/score.log 2>&1
-python $script_dir/docker_challengeScheduled.py --timeQuota 14400000 --threads 4 --canCancel -u $SYNAPSE_USER -p $SYNAPSE_PASS --send-messages --notifications score 9608082 >> $script_dir/log/score.log 2>&1
+python $script_dir/docker_challengeScheduled.py --timeQuota 14400000 --threads 4 --canCancel -u $SYNAPSE_USER -p $SYNAPSE_PASS --send-messages --notifications score 9609967 >> $script_dir/log/score.log 2>&1
+python $script_dir/docker_challengeScheduled.py --timeQuota 14400000 --threads 4 --canCancel -u $SYNAPSE_USER -p $SYNAPSE_PASS --send-messages --notifications score 9609968 >> $script_dir/log/score.log 2>&1
 
 #--------------------
 #Stop submissions

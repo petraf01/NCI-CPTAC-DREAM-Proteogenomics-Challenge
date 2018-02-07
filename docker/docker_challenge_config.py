@@ -31,27 +31,27 @@ config_evaluations = [
 #Proteogenomics Subchallenge 3 Ovarian (9608083)
 
     {
-        'id':8720143,
+        'id':9609971,
         'score_sh':'/score_sc1.sh',
         'returnLog':False
     },
     {
-        'id':9608069,
+        'id':9609967,
         'score_sh':'/score_sc2.sh',
         'returnLog':False
     },
     {
-        'id':9608082,
+        'id':9609968,
         'score_sh':'/score_sc2.sh',
         'returnLog':False
     },
     {
-        'id':9608070,
+        'id':9609969,
         'score_sh':'/score_sc3.sh',
         'returnLog':False
     },
     {
-        'id':9608083,
+        'id':9609970,
         'score_sh':'/score_sc3.sh',
         'returnLog':False
     },
@@ -101,17 +101,17 @@ config_evaluations = [
 #Proteogenomics Subchallenge 3 Internal (9606532)
 
     {
-        'id':9606530,
+        'id':9609869,
         'score_sh':'/score_sc1.sh',
         'returnLog':True
     },
     {
-        'id':9606531,
+        'id':9609853,
         'score_sh':'/score_sc2.sh',
         'returnLog':True
     },
     {
-        'id':9606532,
+        'id':9609852,
         'score_sh':'/score_sc3.sh',
         'returnLog':True
     }
