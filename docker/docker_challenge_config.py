@@ -183,11 +183,6 @@ def dockerValidate(submission, syn, user, password, returnLog):
     if len(predSynId) == 0:
         predFolder = syn.store(Folder(submission.id, parent = CHALLENGE_PREDICTION_FOLDER))
         predFolder = predFolder.id
-        access = ['READ','DOWNLOAD']
-        #Comment set permissions out if you don't want to allow participants to see the pred files
-        #syn.setPermissions(predFolder, principalId = participant['principalId'], accessType = access)
-        syn.setPermissions(predFolder, principalId = 3368033, accessType = access)
-
     else:
         predFolder = predSynId[0]
     if len(logsSynId) == 0:
