@@ -136,7 +136,7 @@ steps:
     in:
       - id: synapseid
         #This is a dummy syn id
-        valueFrom: "syn8695042"
+        valueFrom: "syn11328910"
       - id: synapse_config
         source: "#synapseConfig"
     out:

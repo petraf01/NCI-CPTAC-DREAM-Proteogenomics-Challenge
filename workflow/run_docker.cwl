@@ -40,7 +40,7 @@ arguments:
     prefix: -c
   
   #Docker run has access to the local file system, so this path is the input directory locally
-  - valueFrom: /Users/ThomasY/Documents/
+  - valueFrom: /Users/ThomasY/sage_projects/DREAM/NCI-CPTAC/NCI-CPTAC-Challenge/docker/evaluation_data
     prefix: -i
   #- valueFrom: /home/ubuntu
   #  prefix: -i
