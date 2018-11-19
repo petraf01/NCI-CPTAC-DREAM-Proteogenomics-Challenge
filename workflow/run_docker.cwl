@@ -40,7 +40,7 @@ arguments:
     prefix: -c
   
   #Docker run has access to the local file system, so this path is the input directory locally
-  - valueFrom: /home/tyu/evaluation_data
+  - valueFrom: /home/ec2-user/evaluation_data
     prefix: -i
 
 requirements:
