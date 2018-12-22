@@ -105,7 +105,7 @@ requirements:
             if container is None:
               #Run as detached, logs will stream below
               try:
-                container = client.containers.run(docker_image, "/score_sc2.sh", detach=True, volumes = volumes, name=args.submissionid, network_disabled=True, stderr=True, mem_limit="8g")
+                container = client.containers.run(docker_image, "/score_sc2.sh", detach=True, volumes = volumes, name=args.submissionid, network_disabled=True, stderr=True) #,mem_limit="8g"
               except docker.errors.APIError as e:
                 cont = client.containers.get(args.submissionid)
                 cont.remove()
