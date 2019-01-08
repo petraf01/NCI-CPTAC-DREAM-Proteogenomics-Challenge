@@ -5,4 +5,5 @@ syn = synapseclient.login()
 
 temp = syn.getChildren("syn8228304",includeTypes=['dockerrepo'])
 for i in temp:
+	print(i)
 	syn.submit(9614155, i['id'])
