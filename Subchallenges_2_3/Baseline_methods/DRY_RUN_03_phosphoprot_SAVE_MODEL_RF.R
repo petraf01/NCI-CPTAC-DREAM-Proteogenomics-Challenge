@@ -33,10 +33,16 @@ if (init[2]>dim(Y.phospho)[1]) init[2]<-dim(Y.phospho)[1]
 
 out<-vector("list", init[2]-init[1])
 ss=0
+TOP=200;
+
 for (k in init[1]:init[2]){
   ss=ss+1
   index<-(is.na(Y.phospho[k,])==FALSE)
-  out[[ss]]<-randomForest(x=t(Y.pro[,index]),y=Y.phospho[k,index],nTree=1000)
+  
+  cor.p = sapply(1:L,function(l){cor(Y.phospho[k,index],Y.pro[l,index], use = 'pairwise.complete.obs')});
+  i<-sort(cor.p,decreasing=TRUE,index=TRUE)
+
+  out[[ss]]<-randomForest(x=t(Y.pro[i$ix[seq(1,TOP)],index]),y=Y.phospho[k,index],nTree=1000)
   print(k)
 } 
 
